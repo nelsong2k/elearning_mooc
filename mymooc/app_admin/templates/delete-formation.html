@@ -1,0 +1,30 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area">
+    <!-- Breadcumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list_formation' %}">Formations</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Supprimer formation</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h4>Voulez-vous supprimer cette formation ? ({{object}})</h4>
+                <input type="submit" value="Supprimer" class="btn btn-danger">
+                <a href="{% url 'list_formation' %}" class="btn btn-secondary">Non</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,306 @@
+{% extends 'base-login.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .card-title {
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .card-text {
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .page-title-section.overlay {
+    border-bottom-right-radius: 10% 30%;
+    overflow: hidden;
+  }
+  .page-title-section.overlay::before {
+    border-bottom-right-radius: 10% 30%;
+    overflow: hidden;
+  }
+
+  .media {
+    width: 80px;
+    height: 80px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 40px;
+    display: flex; /* Ajoute cette ligne pour afficher les initiales en tant que flexbox */
+    justify-content: center; /* Centre horizontalement les initiales */
+    align-items: center; /* Centre verticalement les initiales */
+  }
+
+</style>
+<!-- page title -->
+<section class="page-title-section overlay"
+  data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-inline custom-breadcrumb">
+          <li class="list-inline-item">
+            <a class="h2 text-primary font-secondary" href="{% url 'cours_list' %}">Détail Cours</a>
+          </li>
+          <li class="list-inline-item text-white h3 font-secondary nasted">
+            {{ cours.nom_cours }}
+          </li>
+        </ul>
+        <p class="text-lighten">
+          Nos cours offrent un bon compromis entre l'évolution continue
+          privilégiée par certaines formations et l'accent mis sur d'autres
+          domaines d'études.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /page title -->
+
+<!-- section -->
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <!-- course thumb -->
+        <img
+          src="{{ cours.image.url }}"
+          class="img-fluid w-100"
+          style="height: 500px"
+        />
+      </div>
+    </div>
+    <!-- course info -->
+    <div class="row align-items-center mb-5">
+      <div class="col-xl-2 order-1 col-sm-6 mb-4 mb-xl-0">
+        <h3 title="{{ cours.nom_cours }}">{{ cours.nom_cours|truncatewords:3 }}</h3>
+      </div>
+      <div class="col-xl-8 order-sm-3 order-xl-2 col-12 order-2">
+        <ul class="list-inline text-xl-center">
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-book text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">VIDEO</h6>
+                <p class="mb-0">{{ object.tutoriel.count }}</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-alarm-clock text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">DURER</h6>
+                <p class="mb-0">{{ disponibilite }} Jours</p>
+              </div>
+            </div>
+          </li>
+          {% for quiz in object.quiz_set.all %}
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-file text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">QUIZ</h6>
+                <p class="mb-0">{{ quiz.number_of_questions }}</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-wallet text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">PASS PERCENTAGE</h6>
+                <p class="mb-0">{{ quiz.required_score_to_pass }} %</p>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-xl-2 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
+        <a href="{% url 'add_suivre' pk=cours.id %}" class="btn btn-primary">S'inscrire</a>
+      </div>
+      <!-- border -->
+      <div class="col-12 mt-4 order-4">
+        <div class="border-bottom border-primary"></div>
+      </div>
+    </div>
+    <!-- course details -->
+    <div class="row">
+      <div class="col-12 mb-4">
+        <h3>A propos du cours</h3>
+        <p>{{ cours.full_description }}</p>
+      </div>
+      <div class="col-12 mb-4">
+        <h3 class="mb-3">Contenu du cours</h3>
+        <div class="col-12 px-0">
+          <h4>
+            <span>Modules</span>
+            <span>{{ object.tutoriel.count }}</span>
+          </h4>
+          <div class="row">
+            <div class="col-md-6">
+              {% if object.tutoriel.count %}
+              <ul class="list-styled">
+                {% for tutoriel in object.tutoriel.all %}
+                <li>
+                  <a href="{% url 'detail-video' tutoriel.id %}">
+                    <span>
+                      <p>
+                        <i class="ti ti-video-camera"></i>
+                        <span>{{ tutoriel.description }}</span>
+                      </p>
+                    </span>
+                  </a>
+                </li>
+                {% endfor %} {% else %}
+
+                <h5>Vous n'avez aucune vidéos</h5>
+              </ul>
+              {% endif %}
+            </div>
+
+            <div class="col-md-6">
+              <h4>Info quiz</h4>
+              {% if object.quiz_set.count %}
+              <ul class="list-styled">
+                {% for quiz in object.quiz_set.all %}
+                <li>
+                  <h6>
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                    Nombre de question:
+                    <span>{{ quiz.number_of_questions }}</span>
+                  </h6>
+                </li>
+                <li>
+                  <h6>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Temps:
+                    <span>{{ quiz.time }} min</span>
+                  </h6>
+                </li>
+                <li>
+                  <h6>
+                    <i class="fa fa-file" aria-hidden="true"></i>
+                    Score de réussite:
+                    <span>{{ quiz.required_score_to_pass }} %</span>
+                  </h6>
+                </li>
+                <li>
+                  <h6>
+                    <i class="fa fa-file" aria-hidden="true"></i> Niveau:
+                    <span>{{ quiz.difficulity }}</span>
+                  </h6>
+                </li>
+                <h4>Vous etes pret pour commencer?</h4>
+                <div>
+                  <a href="{% url 'quiz-view' quiz.pk %}">
+                    <button class="btn btn-success">Oui</button>
+                  </a>
+                </div>
+
+                {% endfor %} {% else %}
+
+                <h4>Vous n'avez aucun quiz</h4>
+
+                {% endif %}
+              </ul><br>
+              <a href="{% url 'forum' cours.id %}">
+                <button class="btn btn-primary" style="background-color: gray; color: white; width: 175px; font-size: 13px; text-align: center; overflow: hidden;">
+                  voir le forum
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- teacher -->
+      <div class="col-12">
+        <h4 class="mb-3">Les membres qui suivent ce cours</h4>
+        <div class="row">
+          {% for user in user_suivre %}
+          <div class="col-lg-4 mb-3">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <div class="media mb-2 mb-sm-0 mr-3 img-fluid">
+                {{ user.first_name|slice:":1" }}{{ user.last_name|slice:":1" }}
+              </div>
+              <div class="media-body">
+                <h4 class="mt-0">{{ user.first_name }} {{ user.last_name }}</h4>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <h6>Aucune personne ne suit ce cours pour le moment.</h6>
+          {% endfor %}
+        </div>
+
+        <div class="border-bottom border-primary mt-4"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /section -->
+
+<!-- related course -->
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center section-title justify-content-between">
+          <h2 class="mb-0 text-nowrap mr-3">Cours Récents</h2>
+          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+          <div>
+            <a href="{% url 'cours_list' %}" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">Voir tout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content">
+      {% for cours in cours_list|slice:3 %}
+      <!-- course item -->
+      <div class="col-lg-4 col-sm-6 mb-5">
+        <div class="card p-0 border-primary rounded-0 hover-shadow">
+          <a href="{% url 'detail-cours' cours.id %}">
+            <img
+              class="card-img-top rounded-0"
+              src="{{ cours.image.url }}"
+              alt="course thumb"
+              style="height: 200px"
+            />
+          </a>
+          <div class="card-body">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <i class="ti-calendar mr-1 text-color"></i>
+                {{cours.created_at|date:'d-m-Y' }}
+              </li>
+              <li class="list-inline-item"><a class="text-color"></a></li>
+            </ul>
+            <a href="{% url 'detail-cours' cours.id %}">
+              <h4 class="card-title" title="{{ cours.nom_cours }}">
+                {{ cours.nom_cours }}
+              </h4>
+            </a>
+            <p class="card-text mb-4" title="{{ cours.description_cours }}">
+              {{ cours.description_cours }}
+            </p>
+            <a
+              href="{% url 'detail-cours' cours.id %}"
+              class="btn btn-primary btn-sm"
+              >Lire plus</a
+            >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- /related course -->
+
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="col-12 col-lg-12 mb-15">
+            <div class="contact-form mt-5">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                            <div class="alert alert-success text-center"><strong>{{ message }}</strong></div>
+                        {% elif message.tags == 'error' %}
+                            <div class="alert alert-danger text-center"><strong>{{ message }}</strong></div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+                    <div class="">
+                        <div class=" text-center"><h4><i class="fa fa-user"> Connexion</i></h4></div>
+                        <div class="card-boby">
+                            <label for="id_username">Nom utilisateur</label>
+                            {% if form.username.errors %}
+                                {% for error in form.username.errors %}
+
+                                    <div class="div-error-{{ form.username.name }}"><small
+                                            class="text-danger">{{ error }}</small></div>
+
+                                {% endfor %}
+                            {% endif %}
+
+                            {{ form.username }}
+
+                            <label for="id_pwd">Mot de passe</label>
+                            {% if form.password.errors %}
+                                {% for error in form.password.errors %}
+
+                                    <div class="div-error-{{ form.password.name }}"><small
+                                            class="text-danger">{{ error }}</small></div>
+
+                                {% endfor %}
+                            {% endif %}
+
+                            {{ form.password }}
+                        </div>
+                        <div class="">
+                            <button class="btn btn-primary btn-block">Se connecter</button>
+                            <p class="mt-2">Vous n'avez pas de compte ? <a href="{% url 'register' %}">Créer le
+                                compte</a></p>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            $('input').keyup(function () {
+                let textSaisi = $(this).val();
+
+                let attrName = $(this).attr('name');
+                let validatorElement = ".div-error-" + attrName;
+                if (textSaisi === "") {
+                    if (!$(this).hasClass('is-invalid')) {
+                        $(this).hasClass('is-invalid');
+
+                        $(validatorElement).show();
+                    }
+                } else {
+                    $(this).removeClass('is-invalid');
+
+                    $(validatorElement).hide();
+                }
+            })
+        })
+    </script>
+{% endblock %}

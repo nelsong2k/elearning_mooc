@@ -1,0 +1,133 @@
+{% extends "base-login.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .card-title {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .card-text {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+   <!-- page title -->
+<section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="list-inline custom-breadcrumb">
+            <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Nos cours</a></li>
+            <li class="list-inline-item text-white h3 font-secondary "></li>
+          </ul>
+          <p class="text-lighten">Nos cours offrent un bon compromis entre l'évolution continue privilégiée par certaines formations 
+            et l'accent mis sur d'autres domaines d'études.</p>
+        </div>
+      </div>
+    </div>
+</section>
+  <!-- /page title -->
+
+  <!-- courses -->
+<section class="section">
+    <div class="container">
+            <!-- course list -->
+        <div class="row justify-content">
+            {% for cours in cours %}
+            <!-- course item -->
+            <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+                <a href="{% url 'detail-cours' cours.id %}">
+                    <img class="card-img-top rounded-0" src="{{ cours.image.url }}" 
+                    alt="course thumb" style="height: 200px;">
+                </a>
+                <div class="card-body">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>{{ cours.created_at|date:'d-m-Y' }}</li>
+                    <li class="list-inline-item"><a class="text-color"></a></li>
+                </ul>
+                <a href="{% url 'detail-cours' cours.id %}">
+                    <h4 class="card-title" title="{{ cours.nom_cours }}">{{ cours.nom_cours }}</h4>
+                </a>
+                <p class="card-text mb-4" title="{{ cours.description_cours }}">{{ cours.description_cours }}</p>
+                <a href="{% url 'detail-cours' cours.id %}" class="btn btn-primary btn-sm">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" tabindex="-1">&laquo; First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link"
+                   href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">&laquo; First</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }} <span
+                            class="sr-only">(current)</span></span>
+                </li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last
+                    &raquo;</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Last &raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+
+  </section>
+  <!-- /courses -->
+    
+                       
+
+{% endblock content %}

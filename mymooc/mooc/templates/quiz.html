@@ -1,0 +1,65 @@
+{% extends 'base-login.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'js/quiz.js' %}" defer></script>
+{% endblock scripts %}
+
+
+{% block content %}
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home-login' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'cours_list' %}">Nos Cours</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quiz</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <div class="container">
+        <div class="col-12 col-lg-12">
+            <div class="contact-form mt-5">
+                <h1 class="text-center">Quiz</h1>
+
+                <div class="row">
+                    <div class="col">
+                        <h3>{{ quiz.name }}</h3>
+                        <p><strong> Score pour réussir: {{ quiz.required_score_to_pass }}% </strong>  </p>
+                    </div>
+                    <div class="col text-right" id="timer-box"></div>
+                </div>
+
+
+                <div id="score-box"></div>
+                <div id="result-box"></div>
+                <form action="" id="quiz-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-12" id="quiz-box">
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn clever-btn w-100" id="submit-btn">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function () {
+            submitBtn.disabled = true;
+        });
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,62 @@
+ {% extends "choix/base-choix.html" %}
+
+ {% load static %}
+
+ {% block content %}
+<!-- page title -->
+
+
+ <section class="page-title-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <h3>Bienvenue <span style="color: green;">{{ user.username }}</span> sur notre site.</h3>
+                <h3>Nous vous proposons deux services majeurs:</h3>
+            </div>
+          </div>
+      <div class="row">
+        <!-- event -->
+        <div class="col-lg-6 col-sm-6 mb-6">
+            <div class="card-body">
+              <!-- location -->
+{#              <p><i class="ti-location-pin text-primary mr-2"></i>@Copyright</p>#}
+              <a href="{% url 'list-help' %}">
+                <h2 class="card-title text-center">Services d'assistance</h2>
+              </a>
+            </div>
+          <div class="card border-0 rounded-0 hover-shadow">
+            <div class="card-img position-relative">
+                <a href="{% url 'list-help' %}">
+                    <img class="card-img-top rounded-0" src="static/images/events/2.jpg" alt="event thumb">
+                </a>
+              {% comment %} <div class="card-date"><span>18</span><br>December</div> {% endcomment %}
+            </div>
+
+          </div>
+        </div>
+
+        <!-- event -->
+        <div class="col-lg-6 col-sm-6 mb-6">
+            <div class="card-body">
+              <!-- location -->
+{#              <p><i class="ti-location-pin text-primary mr-2"></i>@Copyright</p>#}
+              <a href="{% url 'list_suivres' pk=user.id %}">
+                <h2 class="card-title text-center">Video Learning</h2>
+              </a>
+            </div>
+          <div class="card border-0 rounded-0 hover-shadow">
+            <div class="card-img position-relative">
+                <a href="{% url 'list_suivres' pk=user.id %}">
+                    <img class="card-img-top rounded-0" src="static/images/events/1.jpg" alt="event thumb">
+                </a>
+              {% comment %} <div class="card-date"><span>21</span><br>December</div> {% endcomment %}
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

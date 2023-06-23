@@ -1,0 +1,402 @@
+ {% extends "base.html" %} 
+
+ {% load static %}
+
+ {% block content %}
+ <style>
+        .card-title {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-text {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+    </style>
+    <!-- hero slider -->
+    <section class="hero-section overlay bg-cover" data-background="static/images/banner/banner-1.jpg">
+        <div class="container">
+            <div class="hero-slider">
+                <!-- slider item -->
+                <div class="hero-slider-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5"
+                                data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1">Votre brillant
+                                avenir est notre mission</h1>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5"
+                               data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4">Découvrez un
+                                nouveau monde d'apprentissage en ligne avec notre plateforme innovante. Nous sommes là
+                                pour vous guider et vous inspirer tout au long de votre parcours vers la réussite.</p>
+                            <a href="{% url 'login' %}" class="btn btn-primary" data-animation-out="fadeOutRight"
+                               data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft"
+                               data-delay-in=".7">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- slider item -->
+                <div class="hero-slider-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-white" data-animation-out="fadeOutUp" data-delay-out="5"
+                                data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Votre brillant
+                                avenir est notre mission</h1>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutUp" data-delay-out="5"
+                               data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">Découvrez un
+                                nouveau monde d'apprentissage en ligne avec notre plateforme innovante. Nous sommes là
+                                pour vous guider et vous inspirer tout au long de votre parcours vers la réussite.</p>
+                            <a href="{% url 'login' %}" class="btn btn-primary" data-animation-out="fadeOutUp"
+                               data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown"
+                               data-delay-in=".7">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- slider item -->
+                <div class="hero-slider-item">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-white" data-animation-out="fadeOutDown" data-delay-out="5"
+                                data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Votre brillant
+                                avenir est notre mission</h1>
+                            <p class="text-muted mb-4" data-animation-out="fadeOutDown" data-delay-out="5"
+                               data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".4">Découvrez un
+                                nouveau monde d'apprentissage en ligne avec notre plateforme innovante. Nous sommes là
+                                pour vous guider et vous inspirer tout au long de votre parcours vers la réussite.</p>
+                            <a href="{% url 'login' %}" class="btn btn-primary" data-animation-out="fadeOutDown"
+                               data-delay-out="5" data-duration-in=".3" data-animation-in="zoomIn" data-delay-in=".7">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /hero slider -->
+
+    <!-- banner-feature -->
+    <section class="bg-gray">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-xl-4 col-lg-5 align-self-end">
+                    <img class="img-fluid w-100" src="static/images/banner/jeune-etudiant.jpg" alt="banner-feature">
+                </div>
+                <div class="col-xl-8 col-lg-7">
+                    <div class="row feature-blocks bg-gray justify-content-between">
+                        <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+                            <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <h3 class="mb-xl-4 mb-lg-3 mb-4">Nos Cours</h3>
+                            <p>Découvrez notre sélection de cours en ligne captivants, conçus pour vous aider à
+                                développer de nouvelles compétences et à atteindre vos objectifs.</p>
+                        </div>
+                        <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+                            <i class="ti-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <h3 class="mb-xl-4 mb-lg-3 mb-4">Votre Tableau Bord</h3>
+                            <p>Accédez à votre tableau de bord personnalisé pour suivre tous vos cours en un seul
+                                endroit, simplifiant ainsi votre parcours d'apprentissage</p>
+                        </div>
+                        <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+                            <i class="ti-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <h3 class="mb-xl-4 mb-lg-3 mb-4">Nos Formations</h3>
+                            <p>Acquérez de nouvelles compétences et élargissez vos horizons avec nos formations en ligne
+                                interactives, dispensées par des experts passionnés.</p>
+                        </div>
+                        <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+                            <i class="ti-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <h3 class="mb-xl-4 mb-lg-3 mb-4">Services Assistances</h3>
+                            <p>Notre service d'assistance dédié est là pour répondre à toutes vos questions et vous
+                                offrir un soutien personnalisé pour résoudre tout souci rencontré.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /banner-feature -->
+
+    <!-- about us -->
+    <section class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 order-2 order-md-1">
+                    <h2 class="section-title">A propos Educenter</h2>
+                    <p>À propos de nos cours en ligne : Nous proposons une vaste gamme de cours interactifs conçus pour
+                        vous permettre d'apprendre où que vous soyez et quand vous le souhaitez. Avec des instructeurs
+                        experts, du contenu de qualité et des ressources pédagogiques variées, nos cours en ligne
+                        offrent une expérience d'apprentissage enrichissante et flexible. Que vous souhaitiez acquérir
+                        de nouvelles compétences professionnelles, explorer de nouveaux domaines ou simplement nourrir
+                        votre curiosité, nos cours en ligne sont conçus pour vous aider à atteindre vos objectifs et à
+                        réaliser votre potentiel.</p>
+                    <p>Rejoignez notre communauté d'apprenants en ligne et embarquez pour un
+                        voyage d'apprentissage passionnant et inspirant.</p>
+                    {#                    <a href="about.html" class="btn btn-primary-outline">Learn more</a>#}
+                </div>
+                <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                    <img class="img-fluid w-100" src="static/images/about/jeune-femme.jpg" alt="about image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about us -->
+
+    <!-- courses -->
+    <section class="section-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex align-items-center section-title justify-content-between">
+                        <h2 class="mb-0 text-nowrap mr-3">Quelques Cours</h2>
+                        <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+{#                        <div>#}
+{#                            <a href="{% url 'cours_list' %}"#}
+{#                               class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">Voir Tout</a>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+            <!-- course list -->
+            <div class="row justify-content-center">
+                <!-- course item -->
+                {% for cours in cours|slice:":3" %}
+                    <div class="col-lg-4 col-sm-6 mb-5">
+                        <div class="card p-0 border-primary rounded-0 hover-shadow">
+                            <img class="card-img-top rounded-0" src="{{ cours.image.url }}"
+                                 alt="course thumb" style="height: 200px;">
+                            <div class="card-body">
+                                <ul class="list-inline mb-2">
+                                    <li class="list-inline-item"><i
+                                            class="ti-calendar mr-1 text-color"></i>{{ cours.created_at|date:'d-m-Y' }}
+                                    </li>
+                                    <li class="list-inline-item"><a class="text-color"></a></li>
+                                </ul>
+                                <h4 class="card-title" title="{{ cours.nom_cours }}">{{ cours.nom_cours }}</h4>
+                                <p class="card-text mb-4"
+                                   title="{{ cours.description_cours }}">{{ cours.description_cours }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- /course list -->
+            <!-- mobile see all button -->
+{#            <div class="row">#}
+{#                <div class="col-12 text-center">#}
+{#                    <a href="courses.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </section>
+    <!-- /courses -->
+
+    <!-- cta -->
+    {#    <section class="section bg-primary">#}
+    {#        <div class="container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-12 text-center">#}
+    {#                    <h6 class="text-white font-secondary mb-0">Click to Join the Advance Workshop</h6>#}
+    {#                    <h2 class="section-title text-white">Training In Advannce Networking</h2>#}
+    {#                    <a href="contact.html" class="btn btn-secondary">join now</a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+    <!-- /cta -->
+
+    <!-- success story -->
+    <section class="section bg-cover" data-background="static/images/backgrounds/success-story.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-4 position-relative success-video">
+                    <a class="play-btn venobox" href="https://youtu.be/nA1Aqp0sPQo" data-vbtype="video">
+                        <i class="ti-control-play"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-sm-8">
+                    <div class="bg-white p-5">
+                        <h2 class="section-title">Success Stories</h2>
+                        <p>Les cours en ligne offrent de nombreux avantages pour les apprenants. Grâce à leur
+                            flexibilité, les cours en ligne permettent d'étudier à son propre rythme, en adaptant les
+                            sessions d'apprentissage à ses contraintes personnelles et professionnelles. Ils offrent
+                            également un large éventail de choix, avec des cours spécialisés dans différents domaines,
+                            accessibles depuis n'importe quel endroit. De plus, les ressources pédagogiques
+                            interactives, les exercices pratiques et les forums de discussion favorisent l'engagement et
+                            les échanges entre apprenants et instructeurs.</p>
+                        <p>Les cours en ligne offrent ainsi une expérience d'apprentissage personnalisée, permettant aux
+                            apprenants d'acquérir de nouvelles compétences, de se reconvertir professionnellement ou de
+                            se perfectionner dans leur domaine, le tout de manière pratique et accessible. Ils
+                            constituent une solution flexible et moderne pour développer ses connaissances et atteindre
+                            ses objectifs professionnels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /success story -->
+
+    <!-- events -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex align-items-center section-title justify-content-between">
+                        <h2 class="mb-0 text-nowrap mr-3">Quelques Servives Assistances</h2>
+                        <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+{#                        <div>#}
+{#                            <a href="{% url 'list-help' %}"#}
+{#                               class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">Voir Tout</a>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <!-- event -->
+                {% for help in helps|slice:3 %}
+                    <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                        <div class="card border-0 rounded-0 hover-shadow">
+                            <div class="card-img position-relative">
+                                <img class="card-img-top rounded-0" src="{{ help.image.url }}" alt="event thumb"
+                                     style="max-height: 180px">
+                                <div class="card-date">
+                                    <span>{{ help.created_at|date:"d" }}</span><br>
+                                    {{ help.created_at|date:"F" }}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- location -->
+                                <a href="event-single.html">
+                                    <p class="card-title">{{ help.nom_helping|truncatewords:6 }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- event -->
+
+            </div>
+            <!-- mobile see all button -->
+{#            <div class="row">#}
+{#                <div class="col-12 text-center">#}
+{#                    <a href="course.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+    </section>
+    <!-- /events -->
+
+    <!-- teachers -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h2 class="section-title">Quelques Formations</h2>
+                </div>
+                <!-- teacher -->
+                {% for formation in formations|slice:":3" %}
+                    <div data-ref="mixitup-target" class="col-lg-4 col-sm-6 mb-5 bio-science">
+                        <div class="card border-0 rounded-0 hover-shadow">
+                            <img class="card-img-top rounded-0" src="{{ formation.img.url }}" alt="teacher"
+                                 style="height: 200px;">
+                            <div class="card-body">
+                                <a href="{% url 'detail-formation' formation.id %}">
+                                    <h4 class="card-title">{{ formation.nom_formation }}</h4>
+                                </a>
+                                <p>{{ formation.description }}</p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a class="text-color" href="#"><i
+                                            class="ti-facebook"></i></a></li>
+                                    <li class="list-inline-item"><a class="text-color" href="#"><i
+                                            class="ti-twitter-alt"></i></a></li>
+                                    <li class="list-inline-item"><a class="text-color" href="#"><i
+                                            class="ti-google"></i></a></li>
+                                    <li class="list-inline-item"><a class="text-color" href="#"><i
+                                            class="ti-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- /teachers -->
+
+    <!-- blog -->
+    {% comment %} <section class="section pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">Latest News</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+    <!-- blog post -->
+    <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+        <img class="card-img-top rounded-0" src="static/images/blog/post-1.jpg" alt="Post thumb">
+        <div class="card-body">
+          <!-- post meta -->
+          <ul class="list-inline mb-3">
+            <!-- post date -->
+            <li class="list-inline-item mr-3 ml-0">August 28, 2019</li>
+            <!-- author -->
+            <li class="list-inline-item mr-3 ml-0">By Jonathon</li>
+          </ul>
+          <a href="blog-single.html">
+            <h4 class="card-title">The Expenses You Are Thinking.</h4>
+          </a>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+          <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+        </div>
+      </div>
+    </article>
+    <!-- blog post -->
+    <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+        <img class="card-img-top rounded-0" src="static/images/blog/post-2.jpg" alt="Post thumb">
+        <div class="card-body">
+          <!-- post meta -->
+          <ul class="list-inline mb-3">
+            <!-- post date -->
+            <li class="list-inline-item mr-3 ml-0">August 13, 2019</li>
+            <!-- author -->
+            <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
+          </ul>
+          <a href="blog-single.html">
+            <h4 class="card-title">Tips to Succeed in an Online Course</h4>
+          </a>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+          <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+        </div>
+      </div>
+    </article>
+    <!-- blog post -->
+    <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+        <img class="card-img-top rounded-0" src="static/images/blog/post-3.jpg" alt="Post thumb">
+        <div class="card-body">
+          <!-- post meta -->
+          <ul class="list-inline mb-3">
+            <!-- post date -->
+            <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
+            <!-- author -->
+            <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
+          </ul>
+          <a href="blog-single.html">
+            <h4 class="card-title">Orientation Program for the new students</h4>
+          </a>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
+          <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+        </div>
+      </div>
+    </article>
+  </div>
+    </div>
+  </section> {% endcomment %}
+    <!-- /blog -->
+
+
+{% endblock %}

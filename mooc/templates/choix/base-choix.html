@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Educenter</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="{% static 'plugins/slick/slick.css' %}">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
+  <!-- animation css -->
+  <link rel="stylesheet" href="{% static 'plugins/animate/animate.css' %}">
+  <!-- aos -->
+  <link rel="stylesheet" href="{% static 'plugins/aos/aos.css' %}">
+  <!-- venobox popup -->
+  <link rel="stylesheet" href="{% static 'plugins/venobox/venobox.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico" type="image/x-icon' %}">
+  <link rel="icon" href="{% static 'images/favicon.ico" type="image/x-icon' %}">
+
+
+</head>
+
+<body>
+
+    {% include "choix/nav-login-choix.html" %}
+    
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    {% comment %} {% include "footer.html" %} {% endcomment %}
+
+
+    
+
+    
+ <!-- jQuery -->
+ <script src="static/plugins/jQuery/jquery.min.js"></script>
+ <!-- Bootstrap JS -->
+ <script src="static/plugins/bootstrap/bootstrap.min.js"></script>
+ <!-- slick slider -->
+ <script src="static/plugins/slick/slick.min.js"></script>
+ <!-- aos -->
+ <script src="static/plugins/aos/aos.js"></script>
+ <!-- venobox popup -->
+ <script src="static/plugins/venobox/venobox.min.js"></script>
+ <!-- mixitup filter -->
+ <script src="static/plugins/mixitup/mixitup.min.js"></script>
+ <!-- google map -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+ <script src="static/plugins/google-map/gmap.js"></script>
+ 
+ <!-- Main Script -->
+ <script src="static/js/script.js"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
+</body>
+
+</html>

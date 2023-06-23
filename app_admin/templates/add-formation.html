@@ -1,0 +1,35 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area">
+    <!-- Breadcumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list_formation' %}">Formations</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter formation</li>
+        </ol>
+    </nav>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="container">
+    <div class="col-12 col-lg-12">
+        <div class="contact-form mt-5">
+            <h4>Ajouter formation</h4>
+            
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                   {{form}}
+                    <div class="col-12">
+                        <button class="btn clever-btn w-100">Enrégister</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

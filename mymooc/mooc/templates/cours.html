@@ -1,0 +1,225 @@
+{% extends 'base-login.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        h6 {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        p {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .features-list {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .content{
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+    </style>
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area" xmlns="http://www.w3.org/1999/html">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home-login' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'cours_list' %}">Nos Cours</a></li>
+                {#            <li class="breadcrumb-item active" aria-current="page">Art &amp; Design</li>#}
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Catagory ##### -->
+    <div class="clever-catagory bg-img d-flex align-items-center justify-content-center p-3"
+         style="background-image: url(static/img/bg-img/bg2.jpg);">
+        <h3>Nos Cours</h3>
+    </div>
+
+    <!-- ##### Popular Course Area Start ##### -->
+    <div class="container" style="max-width: 1230px;">
+        <div class="row">
+
+            <div class="col-12 col-lg-3">
+
+                <section class="popular-courses-area section-padding-100">
+
+                    <div class="course-sidebar">
+                        <!-- Buy Course -->
+                        {#                        <a href="#" class="btn clever-btn mb-30 w-100">Suivre</a>#}
+
+                        <!-- Widget -->
+                        <div class="sidebar-widget">
+                            <h4>Liste formations </h4>
+                            <ul class="features-list">
+                                {% for formation in formations|slice:":5" %}
+
+                                    <li>
+                                        <h6 title="{{ formation.nom_formation }}"><i class="fa fa-file"
+                                                                                     aria-hidden="true"></i> {{ formation.nom_formation }}
+                                        </h6>
+
+                                    </li>
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Widget -->
+                        <div class="sidebar-widget">
+
+                            <h4>Quelques cours</h4>
+                            <ul class="features-list">
+                                {% for cours in object_list|slice:":5" %}
+
+                                    <li>
+                                        <h6 title="{{ cours.nom_cours }}"><i class="fa fa-file"
+                                                                             aria-hidden="true"></i> {{ cours.nom_cours }}
+                                        </h6>
+                                    </li>
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+
+                        <!-- Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Les cours populaires</h5>
+
+                            <!-- Single Courses -->
+                            {% for cours in object_list|slice:":3" %}
+                                <div class="single--courses d-flex align-items-center">
+                                    <div class="thumb">
+                                        <img src="{{ cours.image.url }}" alt="" style="height: 50px; width: 100px">
+                                    </div>
+                                    <div class="content">
+                                        <h6 style="color: #0b0b0b; font-size: 15px;" title="{{ cours.nom_cours }}">{{ cours.nom_cours }}</h6>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+            </div>
+            </section>
+
+            <div class="col-12 col-lg-9">
+                <section class="popular-courses-area section-padding-100">
+                    <div class="container">
+                        <div class="row">
+                            {% for cours in object_list %}
+                                <!-- Single Popular Course -->
+                                <div class="col-12 col-md-6 col-lg-4">
+
+                                    <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
+                                        <a href="{% url 'detail-cours' cours.id %}"><img src="{{ cours.image.url }}"
+                                                                                         alt="" style="height: 200px;"></a>
+                                        <!-- Course Content -->
+                                        <div class="course-content">
+                                            <a href="{% url 'detail-cours' cours.id %}">
+                                                <h6 title="{{ cours.nom_cours }}">{{ cours.nom_cours }}</h6>
+                                            </a>
+                                            <div class="meta d-flex align-items-center">
+                                                <a href="#">CLEVER</a>
+                                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                <a href="#">@Copyright</a>
+                                            </div>
+                                            <p style="color: blue"
+                                               title="{{ cours.description_cours }}">{{ cours.description_cours }}</p>
+                                        </div>
+                                        <!-- Seat Rating Fee -->
+                                        <div class="seat-rating-fee d-flex justify-content-between">
+                                            <div class="seat-rating h-100 d-flex align-items-center">
+                                                <div class="seat">
+                                                    <p>Publié le:</p>
+                                                </div>
+                                                {{ cours.created_at|truncatewords:1 }}
+                                            </div>
+                                            <div class="course-fee h-100">
+                                                <a href="{% url 'detail-cours' cours.id %}" class="free">Savoir+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                        <nav aria-label="...">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=1" tabindex="-1">&laquo; First</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">&laquo; First</a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Previous</a>
+                                    </li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ num }} <span
+                                                    class="sr-only">(current)</span></span>
+                                        </li>
+                                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last
+                                            &raquo;</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Last &raquo;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Popular Course Area End ##### -->
+
+
+
+{% endblock content %}

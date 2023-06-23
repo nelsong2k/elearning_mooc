@@ -1,0 +1,298 @@
+{% extends "base-login.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .card-title {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .card-text {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .nom_cours {
+            max-width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .custom-container {
+            max-width: 1200px; /* Ajustez la valeur selon vos besoins */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+
+   <!-- page title -->
+<section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="list-inline custom-breadcrumb">
+            <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Nos cours</a></li>
+            <li class="list-inline-item text-white h3 font-secondary "></li>
+          </ul>
+          <p class="text-lighten">Nos cours offrent un bon compromis entre l'évolution continue privilégiée par certaines formations
+            et l'accent mis sur d'autres domaines d'études.</p>
+        </div>
+      </div>
+    </div>
+</section>
+  <!-- /page title -->
+
+  <!-- courses -->
+<section class="section">
+    <div class="custom-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center section-title justify-content-between">
+                    <h2 class="mb-0 text-nowrap mr-3">Nos Cours</h2>
+                    <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                    <div>
+                        <a href="{% url 'all_cours' %}"
+                           class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">Voir tout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- course list -->
+        <div class="row">
+            <div class="col-lg-3 bg-light">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="{% url 'search' %}">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="search" name="search" id="search" class="form-control"
+                                           placeholder='Recherche'
+                                           onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-sm w-100 btn_1 boxed-btn"
+                                    type="submit">Recherche
+                            </button>
+                        </form>
+                    </aside>
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title mt-3">Quelques Formations</h4>
+                        <ul class="list cat-list custom-list pl-0">
+                            {% for formation in formations|slice:":5" %}
+                                <li>
+                                    <a href="{% url 'detail-formation' formation.id %}"
+                                       class="d-flex col-12 mt-4 order-4 border-bottom border-primary">
+                                        <p>{{ formation.nom_formation|truncatewords:5 }} </p>
+                                        <p> ({{ formation.num_cours }})</p>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    </aside>
+                    <aside class="single_sidebar_widget popular_post_widget mt-5">
+                        <h3 class="widget_title mb-3">Recent Cours</h3>
+                        {% for cours in object_list|slice:":4" %}
+                        <div class="media post_item mb-3">
+                            <a href="{% url 'detail-cours' cours.id %}">
+                                <img src="{{ cours.image.url }}" alt="post" style="height: 80px; width: 80px">
+                            </a>
+                            <div class="media-body p-3">
+                                <a href="{% url 'detail-cours' cours.id %}">
+                                    <h6 title="{{ cours.nom_cours }}" class="nom_cours">{{ cours.nom_cours }}</h6>
+                                </a>
+                                <p>{{ cours.created_at|date:'F d, Y' }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </aside>
+{#                    <aside class="single_sidebar_widget tag_cloud_widget">#}
+{#                        <h4 class="widget_title">Tag Clouds</h4>#}
+{#                        <ul class="list">#}
+{#                            <li>#}
+{#                                <a href="#">project</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">love</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">technology</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">travel</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">restaurant</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">life style</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">design</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">illustration</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </aside>#}
+{#                    <aside class="single_sidebar_widget instagram_feeds">#}
+{#                        <h4 class="widget_title">Instagram Feeds</h4>#}
+{#                        <ul class="instagram_row flex-wrap">#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_5.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_6.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_7.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_8.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_9.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="#">#}
+{#                                    <img class="img-fluid" src="img/post/post_10.png" alt="">#}
+{#                                </a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </aside>#}
+{#                    <aside class="single_sidebar_widget newsletter_widget">#}
+{#                        <h4 class="widget_title">Newsletter</h4>#}
+{#                        <form action="#">#}
+{#                            <div class="form-group">#}
+{#                                <input type="email" class="form-control" onfocus="this.placeholder = ''"#}
+{#                                       onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>#}
+{#                            </div>#}
+{#                            <button class="btn btn-primary btn-sm text-white w-100 btn_1 boxed-btn"#}
+{#                                    type="submit">Subscribe#}
+{#                            </button>#}
+{#                        </form>#}
+{#                    </aside>#}
+                </div>
+
+            </div>
+            <div class="col-lg-9">
+                <div class="row justify-content">
+                    {% for cours in object_list %}
+                        <!-- course item -->
+                        <div class="col-lg-4 col-sm-6 mb-5">
+                            <div class="card p-0 border-primary rounded-0 hover-shadow">
+                                <a href="{% url 'detail-cours' cours.id %}">
+                                    <img class="card-img-top rounded-0" src="{{ cours.image.url }}"
+                                         alt="course thumb" style="height: 200px;">
+                                </a>
+                                <div class="card-body">
+                                    <ul class="list-inline mb-2">
+                                        <li class="list-inline-item"><i
+                                                class="ti-calendar mr-1 text-color"></i>{{ cours.created_at|date:'d-m-Y' }}
+                                        </li>
+                                        <li class="list-inline-item"><a class="text-color"></a></li>
+                                    </ul>
+                                    <a href="{% url 'detail-cours' cours.id %}">
+                                        <h4 class="card-title" title="{{ cours.nom_cours }}">{{ cours.nom_cours }}</h4>
+                                    </a>
+                                    <p class="card-text mb-4"
+                                       title="{{ cours.description_cours }}">{{ cours.description_cours }}</p>
+                                    <a href="{% url 'detail-cours' cours.id %}" class="btn btn-primary btn-sm">Lire plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" tabindex="-1">&laquo; First</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link"
+                   href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">&laquo; First</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Previous</a>
+            </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }} <span
+                            class="sr-only">(current)</span></span>
+                </li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last
+                    &raquo;</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>
+            </li>
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Last &raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+  </section>
+  <!-- /courses -->
+
+
+
+{% endblock content %}

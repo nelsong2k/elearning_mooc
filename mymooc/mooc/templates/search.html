@@ -1,0 +1,89 @@
+{% extends 'base-login.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area" xmlns="http://www.w3.org/1999/html">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home-login' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'cours_list' %}">Nos Cours</a></li>
+                {#            <li class="breadcrumb-item active" aria-current="page">Art &amp; Design</li>#}
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Catagory ##### -->
+    <div class="clever-catagory bg-img d-flex align-items-center justify-content-center p-3"
+         style="background-image: url(static/img/bg-img/bg2.jpg);">
+        <h3>Nos Cours</h3>
+    </div>
+
+    <!-- ##### Popular Course Area Start ##### -->
+    <div class="container" style="max-width: 1230px;">
+        <div class="row">
+
+            <div class="col-12 col-lg-1"></div>
+
+
+
+            <div class="col-12 col-lg-10">
+                <section class="popular-courses-area section-padding-100">
+                    <div class="container">
+                    <h2>Liste de recherche</h2>
+                        <div class="row">
+                            {% for cours in list_cours %}
+                                <!-- Single Popular Course -->
+                                <div class="col-12 col-md-6 col-lg-4">
+
+                                    <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
+                                        <a href="{% url 'detail-cours' cours.id %}"><img src="{{ cours.image.url }}"
+                                                                                         alt="" style="height: 200px;"></a>
+                                        <!-- Course Content -->
+                                        <div class="course-content">
+                                            <a href="{% url 'detail-cours' cours.id %}">
+                                                <h6 title="{{ cours.nom_cours }}">{{ cours.nom_cours|truncatewords:2 }}</h6>
+                                            </a>
+                                            <div class="meta d-flex align-items-center">
+                                                <a href="#">Sarah Parker</a>
+                                                <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                                                <a href="#">Art &amp; Design</a>
+                                            </div>
+                                            <p style="color: blue" title="{{ cours.description_cours }}">{{ cours.description_cours|truncatewords:3 }}</p>
+                                        </div>
+                                        <!-- Seat Rating Fee -->
+                                        <div class="seat-rating-fee d-flex justify-content-between">
+                                            <div class="seat-rating h-100 d-flex align-items-center">
+                                                <div class="seat">
+                                                    <p>Publié le:</p>
+                                                </div>
+                                                {{ cours.created_at|truncatewords:1 }}
+                                            </div>
+                                            <div class="course-fee h-100">
+                                                <a href="{% url 'detail-cours' cours.id %}" class="free">Savoir+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    <div class="col-12 col-lg-1"></div>
+    </div>
+    <!-- ##### Popular Course Area End ##### -->
+
+
+
+{% endblock content %}

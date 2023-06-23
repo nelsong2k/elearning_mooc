@@ -1,0 +1,130 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            IT &amp; Software</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Des solutions informatiques complètes avec maintenance et support dédiés
+                        pour répondre à vos besoins en matière de logiciels et de technologies de l'information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/software.jpeg" alt="about image">
+                    <h2 class="section-title">IT &amp; SOFTWARE</h2>
+                    <p>
+                        IT (Information Technology) et software sont deux termes étroitement liés dans le domaine de
+                        l'informatique. IT fait référence à l'ensemble des technologies et des outils informatiques
+                        utilisés pour gérer, stocker, traiter, communiquer et sécuriser des données et des
+                        informations. Cela inclut des composants matériels tels que les ordinateurs, les serveurs,
+                        les réseaux et les dispositifs de stockage de données, ainsi que des logiciels tels que les
+                        systèmes d'exploitation, les applications et les outils de sécurité.
+                    </p>
+                    <h5 class="text-center py-4">
+                        Le software, quant à lui, fait référence aux programmes informatiques, aux applications et
+                        aux outils qui permettent aux ordinateurs et aux autres dispositifs informatiques de
+                        traiter, stocker et communiquer des données. Les logiciels peuvent être classés en plusieurs
+                        catégories telles que les systèmes d'exploitation, les logiciels d'application, les
+                        logiciels utilitaires, les logiciels de sécurité, les logiciels de développement, les
+                        logiciels de base de données et bien plus encore.
+                    </h5>
+                    <p>
+                        En combinant les technologies et les outils IT avec les logiciels, les entreprises peuvent
+                        créer des systèmes informatiques sophistiqués qui répondent à leurs besoins opérationnels et
+                        stratégiques. Les entreprises peuvent utiliser les systèmes informatiques pour automatiser
+                        des processus, gérer des données, analyser des données, communiquer avec les clients,
+                        collaborer avec les partenaires, gérer les ressources et les finances, et bien plus encore.
+                    </p>
+                    <p>
+                        Les professionnels de l'IT sont chargés de concevoir, déployer, gérer et sécuriser les
+                        systèmes informatiques, y compris les logiciels. Les développeurs de logiciels, quant à eux,
+                        sont responsables de la conception, du développement, du test et de la maintenance des
+                        programmes informatiques qui répondent aux besoins spécifiques des utilisateurs.
+                    </p>
+                    <p>
+                        En somme, IT et software sont deux domaines clés de l'informatique qui travaillent en tandem
+                        pour permettre aux entreprises de bénéficier des avantages des technologies de
+                        l'information, tels que l'automatisation des processus, l'efficacité opérationnelle, la
+                        productivité accrue et la rentabilité.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+

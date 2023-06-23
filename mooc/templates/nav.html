@@ -1,0 +1,202 @@
+<header class="fixed-top header">
+    <!-- top header -->
+    <div class="top-header py-2 bg-white">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-4 text-center text-lg-left">
+            <a class="text-color mr-3" href="callto:+22893567337"><strong>CALL</strong> +228 93 56 73 37</a>
+            <ul class="list-inline d-inline">
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-linkedin"></i></a></li>
+              <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-lg-8 text-center text-lg-right">
+            <ul class="list-inline">
+              {% comment %} <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li> {% endcomment %}
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{% url 'login' %}">Se connecter</a></li>
+              <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{% url 'register' %}">Créer un compte</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- navbar -->
+   
+    <div class="navigation w-100">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light p-0" style="max-width: 1000px;">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="static/images/logo.png" alt="logo"></a>
+          <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+            aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto text-center">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item @@about">
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+              {% comment %} <li class="nav-item @@courses">
+                <a class="nav-link" href="courses.html">COURSES</a>
+              </li>
+              <li class="nav-item @@events">
+                <a class="nav-link" href="events.html">EVENTS</a>
+              </li> {% endcomment %}
+              <li class="nav-item @@blog">
+                <a class="nav-link" href="blog.html">BLOG</a>
+              </li>
+              {% comment %} <li class="nav-item dropdown view">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Pages
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="teacher.html">Teacher</a>
+                  <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
+                  <a class="dropdown-item" href="notice.html">Notice</a>
+                  <a class="dropdown-item" href="notice-single.html">Notice Details</a>
+                  <a class="dropdown-item" href="research.html">Research</a>
+                  <a class="dropdown-item" href="scholarship.html">Scholarship</a>
+                  <a class="dropdown-item" href="course-single.html">Course Details</a>
+                  <a class="dropdown-item" href="event-single.html">Event Details</a>
+                  <a class="dropdown-item" href="blog-single.html">Blog Details</a>
+                </div>
+              </li> {% endcomment %}
+              <li class="nav-item @@contact">
+                <a class="nav-link" href="{% url 'contact_index' %}">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- /header -->
+{#  <!-- Modal -->#}
+{#  <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#      <div class="modal-dialog modal-lg" role="document">#}
+{#          <div class="modal-content rounded-0 border-0 p-4">#}
+{#              <div class="modal-header border-0">#}
+{#                  <h3>Créer un compte</h3>#}
+{#                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                      <span aria-hidden="true">&times;</span>#}
+{#                  </button>#}
+{#              </div>#}
+{#              <div class="modal-body">#}
+{#                  <div class="login">#}
+{#                    {% csrf_token %}#}
+{#                            {% if messages %}#}
+{#                                {% for message in messages %}#}
+{#                                    <div class="alert alert-danger text-center" role="alert">#}
+{#                                        <strong>{{ message }}</strong>#}
+{#                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                                            <span aria-hidden="true">&times;</span>#}
+{#                                        </button>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+{##}
+{#                      <form action="{% url 'register' %}" class="row" method="POST" novalidate>#}
+{#                        {% csrf_token %}#}
+{#                          <div class="col-12">#}
+{#                              <input type="text" class="form-control mb-3" id="signupPhone" name="last_name" placeholder="Nom">#}
+{#                          </div>#}
+{#                          <div class="col-12">#}
+{#                              <input type="text" class="form-control mb-3" id="signupName" name="first_name" placeholder="Prénom">#}
+{#                          </div>#}
+{#                          <div class="col-12">#}
+{#                            <input type="text" class="form-control mb-3" id="signupName" name="email" placeholder="Email">#}
+{#                        </div>#}
+{#                          <div class="col-12">#}
+{#                              <input type="email" class="form-control mb-3" id="signupEmail" name="username" placeholder="Nom utilisateur">#}
+{#                              {% if form.username.errors %}#}
+{#                                    {% for error in form.username.errors %}#}
+{##}
+{#                                        <div class="div-error-{{ form.username.name }}"><small#}
+{#                                                class="text-danger">{{ error }}</small></div>#}
+{##}
+{#                                    {% endfor %}#}
+{#                                {% endif %}#}
+{#                          </div>#}
+{#                          <div class="col-12">#}
+{#                              <input type="password" class="form-control mb-3" id="signupPassword" name="password" placeholder="Mot de passe">#}
+{#                              {% if form.password.errors %}#}
+{#                                    {% for error in form.password.errors %}#}
+{##}
+{#                                        <div class="div-error-{{ form.password.name }}"><small#}
+{#                                                class="text-danger">{{ error }}</small></div>#}
+{##}
+{#                                    {% endfor %}#}
+{#                                {% endif %}#}
+{#                          </div>#}
+{#                          <div class="col-12">#}
+{#                              <button type="submit" class="btn btn-primary">SIGN UP</button>#}
+{#                          </div>#}
+{#                      </form>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </div>#}
+{#      </div>#}
+{#  </div>#}
+{#  <!-- Modal -->#}
+{#  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#      <div class="modal-dialog modal-lg" role="document">#}
+{#          <div class="modal-content rounded-0 border-0 p-4">#}
+{#              <div class="modal-header border-0">#}
+{#                  <h3>Connexion</h3>#}
+{#                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                      <span aria-hidden="true">&times;</span>#}
+{#                  </button>#}
+{#              </div>#}
+{#              <div class="modal-body">#}
+{#                {% if messages %}#}
+{#                        {% for message in messages %}#}
+{#                            {% if message.tags == 'success' %}#}
+{#                                <div class="alert alert-success text-center"><strong>{{ message }}</strong></div>#}
+{#                            {% elif message.tags == 'error' %}#}
+{#                                <div class="alert alert-danger text-center"><strong>{{ message }}</strong></div>#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                {% endif %}#}
+{#                #}
+{#                  <form action="{% url 'login' %}" class="row" method="POST" novalidate>#}
+{#                    {% csrf_token %}#}
+{#                      {% comment %} <div class="col-12">#}
+{#                          <input type="text" class="form-control mb-3" id="loginPhone" name="loginPhone" placeholder="Phone">#}
+{#                      </div> {% endcomment %}#}
+{#                      <div class="col-12">#}
+{#                        {% if form.username.errors %}#}
+{#                        {% for error in form.username.errors %}#}
+{#                            <div class="div-error-{{ form.username.name }}"><small#}
+{#                                    class="text-danger">{{ error }}</small></div>#}
+{#                        {% endfor %}#}
+{#                       {% endif %}#}
+{#                          <input type="text" class="form-control mb-3" id="loginName" name="username" placeholder="Nom utilisateur">#}
+{#                      </div>#}
+{#                      <div class="col-12">#}
+{#                        {% if form.password.errors %}#}
+{#                                    {% for error in form.password.errors %}#}
+{#                                        <div class="div-error-{{ form.password.name }}"><small#}
+{#                                                class="text-danger">{{ error }}</small></div>#}
+{#                                    {% endfor %}#}
+{#                                {% endif %}#}
+{#                          <input type="password" class="form-control mb-3" id="loginPassword" name="password" placeholder="Mot de passe">#}
+{#                      </div>#}
+{#                      <div class="col-12">#}
+{#                          <button type="submit" class="btn btn-primary">SE CONNECTER</button>#}
+{#                          <p class="mt-2">Vous n'avez pas de compte ? <a href="{% url 'register' %}" data-toggle="modal" data-target="#signupModal">Créer le#}
+{#                            compte</a></p>#}
+{#                      </div>#}
+{#                  </form>#}
+{#              </div>#}
+{#          </div>#}
+{#      </div>#}
+{#  </div>#}
+  

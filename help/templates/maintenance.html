@@ -1,0 +1,123 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Maintenance Préventive</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Une maintenance préventive proactive pour assurer la stabilité et la
+                        performance optimale de vos systèmes et logiciels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/mp.jpg" alt="about image">
+                    <h2 class="section-title">MAINTENANCE PREVENTIVE</h2>
+                    <p>
+                        La maintenance préventive en informatique est une stratégie qui consiste à effectuer
+                        régulièrement des tâches de maintenance sur les équipements informatiques pour éviter les
+                        pannes et réduire les risques de défaillance. Cette stratégie consiste à effectuer des
+                        opérations de maintenance périodiques sur le matériel informatique, le système
+                        d'exploitation et les logiciels installés afin de garantir leur bon fonctionnement.
+                    </p>
+                    <h5 class="text-center py-4">
+                        Les tâches de maintenance préventive en informatique peuvent inclure la mise à jour du
+                        système d'exploitation et des logiciels, la sauvegarde régulière des données, la
+                        vérification des mises à jour de sécurité, la suppression des fichiers inutiles et des
+                        programmes indésirables, la défragmentation du disque dur, la vérification de l'état de la
+                        mémoire vive (RAM) et la nettoyage physique du matériel informatique.
+                    </h5>
+                    <p>
+                        La maintenance préventive est importante car elle permet de prévenir les pannes imprévues et
+                        les pertes de données, de prolonger la durée de vie des équipements informatiques,
+                        d'améliorer les performances du système et de réduire les coûts de réparation. Elle est
+                        particulièrement utile pour les entreprises qui dépendent fortement de leur système
+                        informatique pour leurs opérations quotidiennes et qui ne peuvent pas se permettre
+                        d'interrompre leur activité en raison de pannes imprévues.
+                    </p>
+                    <p>
+                        En somme, la maintenance préventive est une pratique recommandée pour garantir la fiabilité
+                        et la disponibilité des systèmes informatiques, éviter les pertes de données, les temps
+                        d'arrêt et les coûts de réparation élevés, et ainsi maximiser la productivité et la
+                        rentabilité des entreprises.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+

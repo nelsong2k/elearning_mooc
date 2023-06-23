@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <style>
+
+        .form-header h1 {
+            color: white;
+        }
+
+
+        .contact-form label {
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form button {
+            margin-bottom: 20px;
+        }
+
+        {#.contact-form button {#}
+        {#    background-color: #007bff;#}
+        {#    border: none;#}
+        {#}#}
+
+        .contact-form button:hover {
+            background-color: #0062cc;
+        }
+
+
+    </style>
+ <section class="page-title-section overlay" data-background="static/images/backgrounds/page-title.jpg" style="height: 1px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Création de Compte</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+{#                    <p class="text-lighten">Une maintenance préventive proactive pour assurer la stabilité et la#}
+{#                        performance optimale de vos systèmes et logiciels.</p>#}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2 col-lg-2"></div>
+            <div class="col-8 col-lg-8">
+                <div class="contact-form mt-5">
+                    <div class="bg-primary rounded p-3 text-center">
+                        <h2 class="font-weight-bold"><i class="ti ti-user-plus"></i> Création de compte</h2>
+                    </div>
+
+                    <div class="form-container" style="overflow: hidden;">
+                        <form action="" method="POST" novalidate="novalidate">
+                            {% csrf_token %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-danger text-center" role="alert">
+                                        <strong>{{ message }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label for="id_nom">Nom</label>
+                                {{ form.last_name }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_nom">Prénom</label>
+                                {{ form.first_name }}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="id_email">Email</label>
+                                {{ form.email }}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="id_username">Nom utilisateur</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    {% for error in form.username.errors %}
+
+                                        <div class="div-error-{{ form.username.name }}"><small
+                                                class="text-danger">{{ error }}</small></div>
+
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Mot de passe</label>
+                                <div class="password-wrapper" style="display: flex;">
+                                    {{ form.password }}
+                                    <button type="button" class="toggle-password" title="Afficher le mot de passe"
+                                            style="max-height: 60px"><i class="ti ti-eye"></i></button>
+                                </div>
+                                {% if form.password.errors %}
+                                    {% for error in form.password.errors %}
+
+                                        <div class="div-error-{{ form.password.name }}"><small
+                                                class="text-danger">{{ error }}</small></div>
+
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div>
+                            {#                        <div class="form-group">#}
+                            {#                            <label for="id_confirm_pwd">Confirmation de mot de passe</label>#}
+                            {#                            <div class="password-wrapper" style="display: flex;">#}
+                            {#                                <input class="form-control" type="password" name="confirm_pwd" id="id_confirm_pwd">#}
+                            {#                                <button type="button" class="toggle-password" title="Afficher le mot de passe"#}
+                            {#                                        style="max-height: 40px"><i class="fa fa-eye"></i></button>#}
+                            {#                            </div>#}
+                            {#                            {% for error in form.confirm_pwd.errors %}#}
+                            {#                                <span class="text-danger">{{ error }}</span>#}
+                            {#                            {% endfor %}#}
+                            {#                        </div>#}
+                            <button class="btn btn-primary btn-block" type="submit">Enregistrer</button>
+                            <div class="text-center">
+                                <h7>Avez-vous déjà un compte?</h7>
+                                <button class="btn btn-primary btn-block" style="background-color: #0062cc"><a href="{% url 'login' %}">Se connecter</a>
+                                </button>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-2 col-lg-2"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+        togglePasswordButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const passwordField = button.previousElementSibling;
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                button.innerHTML = `<i class="ti ${type === 'password' ? 'ti-eye' : 'ti-eye-slash'}"></i>`;
+                button.setAttribute('title', `${type === 'password' ? 'Afficher' : 'Cacher'} le mot de passe`);
+            });
+        });
+    </script>
+
+
+{% endblock %}

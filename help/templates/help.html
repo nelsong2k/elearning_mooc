@@ -1,0 +1,140 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .success-video {
+            position: absolute;
+            top: 50%;
+            left: 63%;
+            transform: translate(-50%, -50%);
+        }
+
+        .event-title {
+            margin-top: -10px;
+        }
+
+        .single-upcoming-events .date-fee .events-fee a {
+            border-radius: 0 0 0 0;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Nos
+                            Services d'assistance</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary "></li>
+                    </ul>
+                    <p class="text-lighten">Nous sommes là pour vous, à chaque étape de votre parcours. Faites confiance
+                        à notre service d'assistance pour des solutions rapides et fiables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- courses -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <!-- event -->
+                {% for helping in object_list %}
+                    <div class="col-lg-4 col-sm-6 mb-5">
+                        <div class="card border-0 rounded-0 hover-shadow">
+                            <div class="card-img position-relative">
+                                <img class="card-img-top rounded-0" src="{{ helping.image.url }}" alt="event thumb"
+                                     style="max-height: 180px">
+                                <div class="card-date">
+                                    <span>{{ helping.created_at|date:"d" }}</span><br>
+                                    {{ helping.created_at|date:"F" }}
+                                </div>
+                                {% for data in helping.files.all %}
+                                    <div class="col-lg-6 col-sm-4 success-video">
+                                        <a class="play-btn" href="{% url 'detail-help' helping.id %}"
+                                           data-vbtype="video">
+                                            <i class="ti-control-play"></i>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="card-body">
+                                <!-- location -->
+                                <a href="event-single.html">
+                                    <p class="card-title">{{ helping.nom_helping|truncatewords:6 }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- /courses -->
+
+
+
+{% endblock %}
+
+
+

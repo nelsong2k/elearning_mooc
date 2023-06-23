@@ -1,0 +1,61 @@
+ {% extends "choix/base-choix.html" %}
+
+ {% load static %}
+
+ {% block content %}
+
+<!-- ##### Blog Area Start ##### -->
+<section class="blog-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Bienvenue {{ user.username }} sur notre site vous avez le choix entre :</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Blog Area -->
+            <div class="col-12 col-md-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="250ms">
+                    <a href="{% url 'list-help' %}"><img src="static/img/blog-img/2.jpg" alt=""></a>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h2>Services d'assistance</h2>
+                        </a>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">Sarah Parker</a>
+                            <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            <a href="#">Art &amp; Design</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Blog Area -->
+            <div class="col-12 col-md-6">
+                <div class="single-blog-area mb-100 wow fadeInUp" data-wow-delay="500ms">
+                    <a href="{% url 'list_suivres' user.id %}"><img src="static/img/blog-img/1.jpg" alt=""></a>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="#" class="blog-headline">
+                            <h2>Video Learning</h2>
+                        </a>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">Sarah Parker</a>
+                            <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            <a href="#">Art &amp; Design</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus in, sagittis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Blog Area End ##### -->
+
+{% endblock %}

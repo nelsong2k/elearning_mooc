@@ -1,0 +1,23 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for help in object.helping.all %}
+        <!-- ##### Instructors Video Start ##### -->
+        <div class="instructors-video d-flex align-items-center justify-content-center bg-img"
+             style="background-image: url(img/bg-img/bg4.jpg);">
+
+            <!-- video btn -->
+            <a href="{{ helping.files.file.url }}" class="video-btn"><i class="fa fa-play"
+                                                                                       aria-hidden="true"></i></a>
+        </div>
+        <!-- ##### Instructors Video End ##### -->
+    {% endfor %}
+
+
+{% endblock %}
+
+
+

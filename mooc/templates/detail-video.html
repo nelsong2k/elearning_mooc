@@ -1,0 +1,115 @@
+{% extends "choix/base-forum.html" %}
+
+{% block content %}
+
+    <style>
+        td.h6 .duration {
+            float: right;
+        }
+        .full-width {
+        width: 100%;
+        box-sizing: border-box;
+       }
+    </style>
+
+
+
+    <div class="section">
+        <div class="row">
+            <div class="col-lg-4 border-right">
+
+                <div class="row">
+
+                    <div class="curriculum-level">
+                        <ul class="curriculum-list">
+                            <h4 class="bg-secondary text-white p-2 text-center">Contenu du cours</h4>
+                            <li><i class="fa ti-file" aria-hidden="true"></i> {{ object.cours.tutoriel.count }} VIDEOS
+
+                                {% for tutoriel in object.cours.tutoriel.all %}
+                                    <table class="table table-hover table-secondary">
+                                        <tbody>
+                                        <tr>
+                                            <td class="h6">
+                                                <a href="{% url 'detail-video' tutoriel.id %}">
+                                                    <span style="color: black"><i class="fa ti-video-camera" aria-hidden="true" ></i>
+                                                        <span class="tutorial-info"  title="{{ tutoriel.description }}">
+                                                            {{ tutoriel.description|truncatewords:5 }}</span>
+                                                        <span class="duration">{{ tutoriel.durer }}</span>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                {% endfor %}
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <h4 class="bg-secondary text-white p-3">Nom du cours : {{ object.cours.nom_cours }}</h4>
+                {% if poster.video == "http://default" %}
+
+                    <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Fissure in Sandstone"
+                         style="max-width: 600px;"/>
+
+                {% else %}
+
+                    <div class="ratio ratio-16x9">
+                        <video class="video-fluid" controls="controls" style="max-width: 880px;">
+                            <source src="{{ tutoriel.video.url }}" title="video/mp4" alt="Fissure in Sandstone"
+                            />
+                        </video>
+                    </div>
+                {% endif %}
+
+                <h6 class="mb-30">{{ tutoriel.description }}</h6>
+
+                <nav class="navbar navbar-expand-lg navbar-light breadcrumb">
+                    <a class="navbar-brand">Ce contenu est-il édifiant?
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="badge badge-primary">Like: {{ tutoriel.likes_count }}</span>
+                    </a>
+                    
+                    <div class="" id="">
+                        <ul class="">
+                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        {% if tutoriel.is_liked_by_user %}
+                                            <button type="submit" name="unlike" class="btn btn-primary">
+                                                Dislike
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" name="like" class="btn btn-outline-primary">Oui/Non
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+
+
+

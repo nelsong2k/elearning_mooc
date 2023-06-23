@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    </style>
+    <div class="container">
+        <div class="col-12 col-lg-12">
+            <div class="contact-form mt-5">
+                <h4>Inscription</h4>
+
+                <div class="form-container" style="overflow: hidden;">
+                    <form action="" method="POST" novalidate="novalidate">
+                        {% csrf_token %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <strong>{{ message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label for="id_nom">Nom</label>
+                            {{ form.last_name }}
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_nom">Prénom</label>
+                            {{ form.first_name }}
+
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Email</label>
+                            {{ form.email }}
+
+                        </div>
+                        <div class="form-group">
+                            <label for="id_username">Nom utilisateur</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                {% for error in form.username.errors %}
+
+                                    <div class="div-error-{{ form.username.name }}"><small
+                                            class="text-danger">{{ error }}</small></div>
+
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password">Mot de passe</label>
+                            <div class="password-wrapper" style="display: flex;">
+                                {{ form.password }}
+                                <button type="button" class="toggle-password" title="Afficher le mot de passe"
+                                        style="max-height: 40px"><i class="fa fa-eye"></i></button>
+                            </div>
+                            {% if form.password.errors %}
+                                {% for error in form.password.errors %}
+
+                                    <div class="div-error-{{ form.password.name }}"><small
+                                            class="text-danger">{{ error }}</small></div>
+
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+                        {#                        <div class="form-group">#}
+                        {#                            <label for="id_confirm_pwd">Confirmation de mot de passe</label>#}
+                        {#                            <div class="password-wrapper" style="display: flex;">#}
+                        {#                                <input class="form-control" type="password" name="confirm_pwd" id="id_confirm_pwd">#}
+                        {#                                <button type="button" class="toggle-password" title="Afficher le mot de passe"#}
+                        {#                                        style="max-height: 40px"><i class="fa fa-eye"></i></button>#}
+                        {#                            </div>#}
+                        {#                            {% for error in form.confirm_pwd.errors %}#}
+                        {#                                <span class="text-danger">{{ error }}</span>#}
+                        {#                            {% endfor %}#}
+                        {#                        </div>#}
+                        <button class="btn clever-btn w-100 mb-15" type="submit">Enregistrer</button>
+                        <div class="text-center">
+                            <h7>Avez-vous déjà un compte?</h7>
+                            <button class="btn w-100"><a href="{% url 'login' %}">Se connecter</a>
+                            </button>
+                        </div>
+                    </form>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+        togglePasswordButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const passwordField = button.previousElementSibling;
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                button.innerHTML = `<i class="fa ${type === 'password' ? 'fa-eye' : 'fa-eye-slash'}"></i>`;
+                button.setAttribute('title', `${type === 'password' ? 'Afficher' : 'Cacher'} le mot de passe`);
+            });
+        });
+    </script>
+
+
+{% endblock %}

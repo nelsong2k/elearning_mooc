@@ -1,0 +1,79 @@
+{% extends 'partials/base.html' %}
+
+{% block content  %}
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area">
+    <!-- Breadcumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list_cours' %}">Cours</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List cours</li>
+        </ol>
+    </nav>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="container">
+    <div class="row ">
+        
+       
+        <div class="col-md-12">
+            <div class="class col-md-12 mb-100"><h2>Liste cours</h2></div>
+            
+            {% if list_cours %}
+        <div class="contact-form">
+            <div class="col-md-12">
+                <a href="{% url 'ajouter-cours' %}" class='btn btn-info float-right mb-15'><i class="fa fa-plus"> Ajouter Cours</i></a>
+            </div>
+            <div class="form-group card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="h6">Formation</th>
+                            <th class="h6">Nom cours</th>
+                            <th class="h6">Description</th>
+                            <th class="h6">Full description</th>
+                            <th class="h6">Image</th>
+                            <th class="h6">Date fin</th>
+                            <th class="h6">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cours in list_cours  %}
+                        <tr>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.formation}}</a></td>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.nom_cours}}</a></td>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.description_cours}}</a></td>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.full_description|truncatewords:5}}</a></td>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.image}}</a></td>
+                            <td class="h6"><a href="{% url 'update-cours' cours.pk %}">{{cours.date_fin}}</a></td>
+                            
+                            <td>
+                                <a href="{% url 'update-cours' cours.pk %}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                
+                                <a href="{% url 'delete-cours' cours.pk %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            
+            {% else %}
+            <div class="col-md-12 mb-30">
+                <a href="{% url 'ajouter-cours' %}" class='btn btn-info float-right'><i class="fa fa-plus"> Ajouter Cours</i></a>
+            </div>
+            <div class="col-md-12">
+                <h4>Vous n'avez aucun Cours</h4>
+            </div>
+            
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content  %}

@@ -1,0 +1,146 @@
+{% extends "base-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .card-title {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .card-text {
+            max-width: 500px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+
+<section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="list-inline custom-breadcrumb">
+            <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Nos formations</a></li>
+            <li class="list-inline-item text-white h3 font-secondary nasted">Les formations disponibles</li>
+          </ul>
+          {% comment %} <p class="text-lighten">Nos cours offrent un bon compromis entre l'évolution continue privilégiée par certaines formations 
+            et l'accent mis sur d'autres domaines d'études.</p> {% endcomment %}
+        </div>
+      </div>
+    </div>
+</section>
+  <!-- /page title -->
+
+<!-- teachers -->
+<section class="section">
+    <div data-ref="mixitup-target" class="container">
+      {% comment %} <div class="row">
+        <div class="col-12">
+          <!-- teacher category list -->
+          <ul class="list-inline text-center filter-controls mb-5">
+            {% for formation in object_list %}
+            <li class="list-inline-item m-3 text-uppercase" data-filter=".bio-science">{{ formation.nom_formation}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div> {% endcomment %}
+      <!-- teacher list -->
+      <div class="row" data-ref="mixitup-container">
+       
+        <!-- teacher -->
+        {% for formation in object_list %}
+        <div data-ref="mixitup-target" class="col-lg-4 col-sm-6 mb-5 bio-science">
+          <div class="card border-0 rounded-0 hover-shadow">
+              <a href="{% url 'detail-formation' formation.id %}">
+                  <img class="card-img-top rounded-0" src="{{ formation.img.url }}" alt="teacher"
+                       style="height: 200px;">
+              </a>
+            <div class="card-body">
+              <a href="{% url 'detail-formation' formation.id %}">
+                <h4 class="card-title">{{ formation.nom_formation}}</h4>
+                <span>Nombre de cours : {{ formation.num_cours }}</span>
+              </a>
+              <p class="card-text">{{ formation.description }}</p>
+              <ul class="list-inline">
+                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
+                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
+                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
+                <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" tabindex="-1">&laquo; First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">&laquo; First</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+            {% endif %}
+    
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ num }} <span
+                                class="sr-only">(current)</span></span>
+                    </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+    
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last
+                        &raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Last &raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</section>
+  <!-- /teachers -->
+
+{% endblock %}
+
+
+

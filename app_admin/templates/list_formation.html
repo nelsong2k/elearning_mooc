@@ -1,0 +1,72 @@
+{% extends 'partials/base.html' %}
+
+{% block content  %}
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb-area">
+    <!-- Breadcumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'list_formation' %}">Formations</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List formation</li>
+        </ol>
+    </nav>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<div class="container">
+    <div class="row ">
+        
+       
+        <div class="col-md-12">
+            <div class="class col-md-12 mb-100"><h2>Liste formation</h2></div>
+            
+            {% if list_formation %}
+        <div class="contact-form">
+            <div class="col-md-12">
+                <a href="{% url 'ajouter-formation' %}" class='btn btn-info float-right mb-15'><i class="fa fa-plus"> Ajouter formation</i></a>
+            </div>
+            <div class="form-group card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="h6">Nom formation</th>
+                            <th class="h6">Description</th>
+                            <th class="h6">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formation in list_formation  %}
+                        <tr>
+                            <td class="h6"><a href="{% url 'update-formation' formation.pk %}">{{formation.nom_formation}}</a></td>
+                            <td class="h6"><a href="{% url 'update-formation' formation.pk %}">{{formation.description}}</a></td>
+                            <td class="h6"><a href="{% url 'update-formation' formation.pk %}">{{formation.img}}</a></td>
+                            <td>
+                                <a href="{% url 'update-formation' formation.pk %}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                
+                                <a href="{% url 'delete-formation' formation.pk %}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            
+            {% else %}
+
+            <div class="col-md-12 mb-30">
+                <a href="{% url 'ajouter-formation' %}" class='btn btn-info float-right'><i class="fa fa-plus"> Ajouter Formation</i></a>
+            </div>
+            <div class="col-md-12">
+                <h4>Vous n'avez aucune Formation</h4>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content  %}

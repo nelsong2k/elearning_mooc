@@ -1,0 +1,120 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Maintenance Corrective</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Nous offrons une maintenance corrective réactive pour résoudre rapidement
+                        les problèmes et assurer le bon fonctionnement continu de vos services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/Mc.jpeg" alt="about image">
+                    <h2 class="section-title">MAINTENANCE CORRECTIVE</h2>
+                    <p>
+                        La maintenance corrective fait référence aux activités de dépannage et de réparation
+                        nécessaires pour résoudre les problèmes et les défaillances d'un système informatique. Elle
+                        est souvent entreprise en réponse à des pannes ou des erreurs dans le fonctionnement d'un
+                        système, d'un logiciel ou d'un matériel informatique.
+                    </p>
+                    <h5 class="text-center py-4">
+                        La maintenance corrective peut impliquer le dépannage et le diagnostic des problèmes, la
+                        réparation ou le remplacement de pièces défectueuses, la correction de bugs dans les
+                        logiciels ou la réinstallation des programmes. Elle peut également impliquer la restauration
+                        de sauvegardes de données ou la récupération de données endommagées.
+                    </h5>
+                    <p>
+                        L'objectif principal de la maintenance corrective est de minimiser les temps d'arrêt et de
+                        réduire les perturbations pour les utilisateurs. Elle est essentielle pour assurer la
+                        disponibilité et la fiabilité des systèmes informatiques, ainsi que pour garantir la
+                        satisfaction des utilisateurs.
+                    </p>
+                    <p>
+                        La maintenance corrective est souvent associée à la maintenance préventive, qui consiste à
+                        prendre des mesures pour prévenir les pannes et les erreurs avant qu'elles ne se produisent.
+                        Cependant, même avec une maintenance préventive adéquate, des pannes et des erreurs peuvent
+                        survenir, ce qui rend la maintenance corrective une partie essentielle de la gestion des
+                        systèmes informatiques.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+

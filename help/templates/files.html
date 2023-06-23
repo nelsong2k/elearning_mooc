@@ -1,0 +1,70 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .success-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 0%;
+            max-width: 500px;
+            height: 0%;
+            max-height: 500px;
+
+
+        }
+
+        .event-title {
+            margin-top: -10px;
+        }
+
+        .single-upcoming-events .date-fee .events-fee a {
+            border-radius: 0 0 0 0;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Nos
+                            cours</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary "></li>
+                    </ul>
+                    <p class="text-lighten">Nos cours offrent un bon compromis entre l'évolution continue privilégiée
+                        par certaines formations
+                        et l'accent mis sur d'autres domaines d'études.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- courses -->
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

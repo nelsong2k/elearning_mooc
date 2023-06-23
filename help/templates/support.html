@@ -1,0 +1,119 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Support</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Notre support dédié est là pour répondre à vos besoins et résoudre
+                        rapidement vos problèmes, afin de vous offrir une assistance efficace et une expérience sans
+                        souci.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/ITsupport.jpg" alt="about image">
+                    <h2 class="section-title">SUPPORT</h2>
+                    <p>
+                        Le support en ligne en informatique fait référence à l'assistance technique fournie par des
+                        experts informatiques à distance, via des moyens de communication tels que des chats en
+                        direct, des appels vidéo, des e-mails ou des forums en ligne. Le support en ligne peut être
+                        fourni par les fabricants de matériel informatique ou de logiciels, les prestataires de
+                        services informatiques ou les fournisseurs de solutions informatiques.
+                    </p>
+                    <h5 class="text-center py-4">
+                        Le support en ligne peut inclure une gamme de services, tels que la
+                        résolution de problèmes de logiciels, la configuration de périphériques informatiques, la
+                        récupération de données, la maintenance préventive, la mise à jour de logiciels et la
+                        formation à l'utilisation de logiciels et de matériel informatique. Les techniciens
+                        informatiques peuvent accéder à distance à l'ordinateur du client pour diagnostiquer et
+                        résoudre les problèmes.
+                    </h5>
+                    <p>
+                        Le support en ligne peut être particulièrement utile pour les personnes qui ont des problèmes
+                        techniques mais qui ne peuvent pas se déplacer physiquement chez un technicien informatique,
+                        ou pour les entreprises qui ont des besoins d'assistance informatique urgents mais qui ne
+                        peuvent pas se permettre de perdre du temps en déplacements. Les avantages du support en
+                        ligne en informatique comprennent la rapidité d'intervention, la flexibilité et la commodité
+                        pour les clients.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+

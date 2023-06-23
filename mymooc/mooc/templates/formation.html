@@ -1,0 +1,66 @@
+{% extends "base-login.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ##### Upcoming Events Start ##### -->
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area" xmlns="http://www.w3.org/1999/html">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home-login' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'formation' %}">Nos formations</a></li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <!-- ##### Best Tutors Start ##### -->
+    <section class="best-tutors-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Les formations disponibles</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="tutors-slide owl-carousel wow fadeInUp" data-wow-delay="250ms">
+
+                        <!-- Single Tutors Slide -->
+                        {% for formation in formations %}
+                        <div class="single-tutors-slides">
+                        <!-- Tutor Thumbnail -->
+                        <div class="tutor-thumbnail">
+                            <img src="{{ formation.img.url }}" alt="" style="height: 170px">
+                        </div>
+                        <!-- Tutor Information -->
+                        <div class="tutor-information text-center">
+                            <h5>{{ formation.nom_formation}}</h5>
+                            <span>CLEVER</span>
+                            <p>{{ formation.description }}</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Best Tutors End ##### -->
+
+{% endblock %}
+
+
+

@@ -1,0 +1,72 @@
+{% extends 'base-login.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'js/quiz.js' %}" defer></script>
+{% endblock scripts %}
+
+
+{% block content %}
+
+<style>
+    .text-light {
+        color: #fff !important;
+    }
+</style>
+      <!-- ##### Breadcumb Area Start ##### -->
+      <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}"  style='height: 10px'>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <ul class="list-inline custom-breadcrumb">
+                <li class="list-inline-item"><a class="h1 text-primary font-secondary" href="courses.html">Quiz</a></li>
+                <li class="list-inline-item text-white h3 font-secondary nasted">
+                    {{ quiz.name }}
+                  </li>
+                <li class="list-inline-item text-white h3 font-secondary "></li>
+              </ul>
+          </div>
+        </div>
+    </section>
+      <!-- /page title -->
+
+    <div class="container">
+        <div class="col-12 col-lg-12">
+            <div class="contact-form mt-5">
+                <div class="row">
+                    <div class="col">
+                        <p><strong> Score pour réussir: {{ quiz.required_score_to_pass }}% </strong>  </p>
+                    </div>
+                    <div class="col text-right" id="timer-box"></div>
+                </div>
+
+
+                <div class="h4" id="score-box"></div>
+                <div id="result-box" style="color: white"></div>
+                <form action="" id="quiz-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <div class="col-12" id="quiz-box">
+                        </div>
+                        <div class="col-12 bottom mb-4">
+                            <button type="submit" class="btn clever-btn w-100 mb-15" id="submit-btn">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('quiz-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function () {
+            submitBtn.disabled = true;
+        });
+    </script>
+
+{% endblock content %}

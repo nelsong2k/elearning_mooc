@@ -1,0 +1,85 @@
+{% extends "partials/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list_formation' %}">Formations</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list_cours' %}">Cours</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list_tutoriel' %}">Tutoriels</a></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Tableau de bord</h2>
+
+                <!-- ##### Cool Facts Area Start ##### -->
+                <section class="cool-facts-area section-padding-100-0">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Single Cool Facts Area -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp"
+                                     data-wow-delay="250ms">
+                                    <div class="icon">
+                                        <img src="{% static 'img/core-img/docs.png' %}" alt="">
+                                    </div>
+                                    <h2><span class="counter">{{ nb_formations }}</span></h2>
+                                    <h5>Formations</h5>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Facts Area -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp"
+                                     data-wow-delay="500ms">
+                                    <div class="icon">
+                                        <img src="{% static 'img/core-img/star.png' %}" alt="">
+                                    </div>
+                                    <h2><span class="counter">{{ nb_cours }}</span></h2>
+                                    <h5>Cours</h5>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Facts Area -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp"
+                                     data-wow-delay="750ms">
+                                    <div class="icon">
+                                        <img src="{% static 'img/core-img/events.png' %}" alt="">
+                                    </div>
+                                    <h2><span class="counter">{{ nb_tutoriels }}</span></h2>
+                                    <h5>Tutoriels</h5>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Facts Area -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp"
+                                     data-wow-delay="1000ms">
+                                    <div class="icon">
+                                        <img src="{% static 'img/core-img/earth.png' %}" alt="">
+                                    </div>
+                                    <h2><span class="counter">{{ nb_quiz }}</span></h2>
+                                    <h5>Quiz</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ##### Cool Facts Area End ##### -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

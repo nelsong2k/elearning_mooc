@@ -1,0 +1,128 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Formations</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Explorez notre vaste gamme de formations pour développer vos compétences et
+                        rester à la pointe de l'innovation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                    <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/acp-formation.png" alt="about image">
+                    <h2 class="section-title">FORMATIONS</h2>
+                    <p>
+                        La formation en ligne, également appelée e-learning, est une méthode d'apprentissage qui
+                        utilise les technologies de l'information et de la communication pour fournir des contenus
+                        de formation à distance. Les e-learning permettent aux apprenants d'accéder à des cours en
+                        ligne depuis n'importe quel endroit et à tout moment, en utilisant un ordinateur, une
+                        tablette ou un téléphone portable.
+                    </p>
+                    <h5 class="text-center py-4">
+                        Les cours en ligne peuvent prendre diverses formes, notamment des vidéos de formation, des
+                        conférences en direct, des cours en ligne interactifs, des quiz et des tests en ligne. Les
+                        apprenants peuvent suivre le cours à leur propre rythme et selon leur propre horaire, ce qui
+                        leur permet de s'adapter à leurs contraintes personnelles et professionnelles.
+                    </h5>
+                    <p>
+                        La formation en ligne offre de nombreux avantages par rapport aux méthodes de formation
+                        traditionnelles. Elle permet d'économiser du temps et de l'argent en évitant les
+                        déplacements, les frais de déplacement et d'hébergement. Elle est également plus souple, car
+                        elle permet aux apprenants de suivre le cours à leur propre rythme, ce qui est
+                        particulièrement utile pour les personnes ayant des horaires chargés.
+                    </p>
+                    <p>
+                        Les e-learning sont également efficaces pour améliorer la participation des apprenants et
+                        favoriser leur engagement. Les cours en ligne peuvent être conçus pour être interactifs et
+                        immersifs, en utilisant des vidéos, des animations et des jeux éducatifs pour rendre
+                        l'apprentissage plus intéressant et motivant.
+                    </p>
+                    <p>
+                        En somme, la formation en ligne est une méthode d'apprentissage flexible, économique et
+                        efficace qui est de plus en plus populaire dans le monde entier. Elle offre aux apprenants
+                        la possibilité d'acquérir de nouvelles compétences et connaissances à leur propre rythme, ce
+                        qui est particulièrement important dans le contexte actuel où le monde du travail et les
+                        compétences requises sont en constante évolution.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+

@@ -1,0 +1,106 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ##### Upcoming Events Start ##### -->
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area" xmlns="http://www.w3.org/1999/html">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'help-home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'list-help' %}">Recherche </a></li>
+                {#            <li class="breadcrumb-item active" aria-current="page">Art &amp; Design</li>#}
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <section class="upcoming-events section-padding mt-5">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Liste de recherche</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <style>
+                    .instructors-video {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 1;
+                        width: 0%;
+                        max-width: 500px;
+                        height: 0%;
+                        max-height: 500px;
+                        background-attachment: fixed !important;
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+
+                    .event-title {
+                        margin-top: -10px;
+                    }
+
+                    .single-upcoming-events .date-fee .events-fee a {
+                        border-radius: 0 0 0 0;
+                    }
+
+                </style>
+
+                <!-- Single Upcoming Events -->
+                {% for helping in list_help %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="single-upcoming-events mb-50 wow fadeInUp" data-wow-delay="250ms">
+                            <!-- Events Thumb -->
+                            <div class="events-thumb">
+                                <img src="{{ helping.image.url }}" alt="" style="max-height: 180px">
+                                <h6 class="event-date">{{ helping.created_at }}</h6>
+                                <h5 class="event-title"
+                                    title="{{ helping.nom_helping }}">{{ helping.nom_helping|truncatewords:3 }}</h5>
+                            </div>
+                            <!-- Date & Fee -->
+                            <div class="date-fee d-flex justify-content-between">
+                                <div class="date">
+                                    <p title="{{ helping.desc_helping }}"><i
+                                            class="fa fa-clock"></i> {{ helping.desc_helping|truncatewords:5 }}</p>
+                                </div>
+                                <div class="events-fee">
+                                    <!-- ##### Instructors Video Start ##### -->
+                                    {% for data in helping.files.all %}
+                                        <div class="instructors-video d-flex align-items-center justify-content-center">
+                                            <a href="{{ data.file.url }}" class="video-btn" type="video/mp4"><i
+                                                    class="fa fa-play" aria-hidden="true"></i></a>
+                                            {#                                            <video class="video-fluid"  controls="controls" style="max-width: 830px;">#}
+                                            {#                                <source src="{{data.file.url}}" title="video/mp4"  alt="Fissure in Sandstone"#}
+                                            {#                                />#}
+                                            {#                            </video>#}
+
+                                        </div>
+                                    {% endfor %}
+                                    <!-- ##### Instructors Video End ##### -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ##### Upcoming Events End ##### -->
+
+
+
+{% endblock %}
+
+
+

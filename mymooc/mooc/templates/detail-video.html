@@ -1,0 +1,128 @@
+{% extends 'base-login.html' %}
+
+{% block content %}
+
+    <style>
+        td.h6 .duration {
+            float: right;
+        }
+
+    </style>
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb-area">
+        <!-- Breadcumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                <li class="breadcrumb-item"><a href="#">Art &amp; Design</a></li>
+                <li class="breadcrumb-item active" aria-current="page">English Grammer</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+
+    <div class="container" style="max-width: 1230px;">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4 class="mt-2">Contenu du cours</h4>
+                <div class="row">
+
+                    <div class="curriculum-level mb-30">
+
+
+                        <ul class="curriculum-list">
+                            <li><i class="fa fa-file" aria-hidden="true"></i> {{ object.cours.tutoriel.count }} VIDEOS
+                                {#                                {% for tutoriel in object.cours.tutoriel.all %}#}
+                                {% for tutoriel in object.cours.tutoriel.all %}
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <td class="h6">
+                                                <a href="{% url 'detail-video' tutoriel.id %}">
+                                                    <span><i class="fa fa-video-camera" aria-hidden="true"></i>
+                                                        <span class="tutorial-info" title="{{ tutoriel.description }}">{{ tutoriel.description|truncatewords:6 }}</span>
+                                                        <span class="duration">{{ tutoriel.durer }}</span>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                {% endfor %}
+
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <br>
+
+                {% if poster.video == "http://default" %}
+
+                    <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Fissure in Sandstone"
+                         style="max-width: 600px;"/>
+
+                {% else %}
+
+                    <div class="ratio ratio-16x9">
+                        <video class="video-fluid" controls="controls" style="max-width: 830px;">
+                            <source src="{{ tutoriel.video.url }}" title="video/mp4" alt="Fissure in Sandstone"
+                            />
+                        </video>
+                    </div>
+                {% endif %}
+
+                <h6 class="mb-30">{{ tutoriel.description }}</h6>
+
+                <nav class="navbar navbar-expand-lg navbar-light breadcrumb">
+                    <a class="navbar-brand">Ce contenu est-il édifiant?
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="badge badge-primary">Like: {{ tutoriel.likes_count }}</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        {% if tutoriel.is_liked_by_user %}
+                                            <button type="submit" name="unlike" class="btn btn-primary">
+                                                Dislike
+                                            </button>
+                                        {% else %}
+                                            <button type="submit" name="like" class="btn btn-outline-primary">Oui/Non
+                                            </button>
+                                        {% endif %}
+                                    </form>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+
+
+
+

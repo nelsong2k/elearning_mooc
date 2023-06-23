@@ -1,0 +1,32 @@
+from django.urls import path
+from .views import *
+
+urlpatterns = [
+    path("", home, name="home"),
+    path("choix", choix, name="choix"),
+    path("home-login", home_login, name="home-login"),
+    path('detail_cours/<int:pk>', CoursDetailView.as_view(), name='detail-cours'),
+    path('detail_formation/<int:pk>', FormationDetailView.as_view(), name='detail-formation'),
+    path('cours_list', CoursListView.as_view(), name='cours_list'),
+    path('all_cours', AllCoursListView.as_view(), name='all_cours'),
+    path('detail_video/<int:pk>', TutorielDetailView.as_view(), name='detail-video'),
+    path('register', AddUser.as_view(), name='register'),
+    path('login', login_user, name='login'),
+    path('logout', logout_user, name='logout'),
+    path('suivre/add/<int:pk>', addSuivre, name='add_suivre'),
+    path('list_suivres/<int:pk>', SuivreListView.as_view(), name='list_suivres'),
+    path('quiz-view/<int:pk>/', QuizDetailView.as_view(), name='quiz-view'),
+    path('quiz-view/<int:pk>/data/', quiz_data_view, name='quiz-data-view'),
+    path('quiz-view/<int:pk>/save', save_quiz_view, name='save-view'),
+    path('suivre/delete/<int:pk>', deletesuivre, name='delete-suivre'),
+    path('recherche', search, name='search'),
+    path('profil/<int:pk>', ProfilDetailView.as_view(), name='profil'),
+    path('cours_suivis/', CoursSuivisView.as_view(), name='cours_suivis'),
+    path('delete_cours_suivis/delete/<int:pk>', deleteCoursSuivis, name='delete_cours_suivis'),
+    path('reglage', reglageCompte, name='reglage-compte'),
+    path('contact_login', AddContactView.as_view(), name='contact-login'),
+    path('nos_formations', FormationListView.as_view(), name='formation'),
+    path('contact_index', AddContactIndexView.as_view(), name='contact_index'),
+    path('user/results/', UserResultsView.as_view(), name='user_results'),
+    path('forum/<int:pk>', ForumDetailView.as_view(), name='forum'),
+]

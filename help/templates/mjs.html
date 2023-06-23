@@ -1,0 +1,123 @@
+{% extends "help/basehelp-login.html" %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .page-title-section.overlay {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+
+        .page-title-section.overlay::before {
+            border-bottom-right-radius: 10% 30%;
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- page title -->
+    <section class="page-title-section overlay" data-background="{% static 'images/backgrounds/page-title.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">
+                            Mise à jour sécurité</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
+                    </ul>
+                    <p class="text-lighten">Nous sommes engagés à assurer la sécurité de vos données grâce à des mises à
+                        jour régulières et à une surveillance proactive des menaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /page title -->
+
+    <!-- about -->
+    <section class="section">
+
+    <div class="row mb-5">
+        <div class="container">
+            <div class="col-xl-12">
+                   <div class="course_nav">
+                        <nav style="font-size: 18px;">
+                            <ul class="nav justify-content-center" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="{% url 'support' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Support</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maintenance' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenace Préventive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'maint_corrective' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Maintenance corrective</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'itsoftware' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">It & Software</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'mjs' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Mise à jour sécurité</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{% url 'formations' %}" role="tab"
+                                        aria-controls="home" aria-selected="true" style="color: #0b0b0b">Formations</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        <!-- border -->
+                <div class="col-12 mt-4 order-4">
+                    <div class="border-bottom border-primary"></div>
+                </div>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <img class="img-fluid w-100 mb-4" src="static/images/about/mjs.png" alt="about image">
+                    <h2 class="section-title">MISE A JOUR SECURITE</h2>
+                    <p>
+                        Les mises à jour de sécurité font référence à des modifications apportées à un logiciel, un
+                        système d'exploitation ou à un autre composant logiciel pour corriger des failles de
+                        sécurité connues ou des vulnérabilités. Ces mises à jour sont cruciales pour protéger les
+                        systèmes informatiques contre les attaques malveillantes et les menaces potentielles.
+                    </p>
+                    <h5 class="text-center py-4">
+                        Les fabricants de logiciels et les développeurs publient régulièrement des mises à jour de
+                        sécurité pour leurs produits, souvent en réponse à des découvertes de failles de sécurité ou
+                        à des attaques précédentes. Ces mises à jour peuvent inclure des correctifs de sécurité, des
+                        correctifs de bogues et des améliorations de sécurité pour empêcher les attaques
+                        potentielles.
+                    </h5>
+                    <p>
+                        Les mises à jour de sécurité sont essentielles pour protéger les systèmes informatiques
+                        contre les attaques potentielles telles que les virus, les logiciels malveillants, les
+                        attaques de phishing et les attaques par déni de service. Les systèmes informatiques qui ne
+                        sont pas régulièrement mis à jour peuvent être vulnérables aux attaques et peuvent être
+                        compromis.
+                    </p>
+                    <p>
+                        Il est important de maintenir les mises à jour de sécurité à jour en installant
+                        régulièrement les dernières mises à jour et correctifs de sécurité. Cela peut être fait
+                        automatiquement par certains logiciels ou peut nécessiter une intervention manuelle pour
+                        télécharger et installer les mises à jour. Les utilisateurs doivent également être
+                        conscients des menaces de sécurité et prendre des mesures pour protéger leurs systèmes en
+                        utilisant des logiciels de sécurité tels que des programmes antivirus et des pare-feu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /about -->
+{% endblock %}
+
+
+
